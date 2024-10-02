@@ -7,9 +7,15 @@ on:
       - develop
       - main
 
+permissions:
+  contents: read
+  actions: read
+  checks: write
+
 jobs:
   unit_tests:
     name: Unit Test
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

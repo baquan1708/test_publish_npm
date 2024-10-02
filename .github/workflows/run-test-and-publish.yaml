@@ -7,6 +7,11 @@ on:
       - develop
       - main
 
+permissions:
+  contents: read
+  actions: read
+  checks: write
+
 jobs:
   unit_tests:
     if: github.event.pull_request.merged == true # Condition
