@@ -2,11 +2,10 @@ name: Run test
 
 on:
   pull_request:
+    types: [opened, synchronize]
     branches:
       - develop
-  push:
-    branches:
-      - develop
+
 jobs:
   unit_tests:
     name: Unit Test
