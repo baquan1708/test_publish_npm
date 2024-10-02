@@ -3,8 +3,8 @@ import {
   DataService,
   DetailDto,
   SearchDto,
-} from '@mbc-cqrs-severless/core'
-import { SequencesService } from '@mbc-cqrs-severless/sequence'
+} from '@thinhnguyen_zsy/core'
+import { SequencesService } from '@thinhnguyen_zsy/sequence'
 import {
   Body,
   Controller,

@@ -1,5 +1,5 @@
 {
-  "name": "@mbc-cqrs-severless/setting",
+  "name": "@thinhnguyen_zsy/setting",
   "version": "0.0.61-alpha.0",
   "description": "Setting master data",
   "main": "./dist/index.js",
@@ -26,6 +26,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@mbc-cqrs-severless/core": "^0.0.61-alpha.0"
+    "@thinhnguyen_zsy/core": "^0.0.61-alpha.0"
   }
 }

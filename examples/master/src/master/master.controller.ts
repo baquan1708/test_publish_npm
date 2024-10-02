@@ -3,7 +3,7 @@ import {
   DataService,
   DetailDto,
   SearchDto,
-} from '@mbc-cqrs-severless/core'
+} from '@thinhnguyen_zsy/core'
 import {
   Body,
   Controller,

@@ -1,4 +1,4 @@
-import { DataListEntity } from '@mbc-cqrs-severless/core'
+import { DataListEntity } from '@thinhnguyen_zsy/core'
 
 import { MasterDataEntity } from './master-data.entity'
 

@@ -5,7 +5,7 @@ import {
   IInvoke,
   INVOKE_CONTEXT,
   SearchDto,
-} from '@mbc-cqrs-severless/core'
+} from '@thinhnguyen_zsy/core'
 import {
   Body,
   Controller,

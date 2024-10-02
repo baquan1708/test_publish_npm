@@ -1,4 +1,4 @@
-import { DataEntity } from '@mbc-cqrs-severless/core'
+import { DataEntity } from '@thinhnguyen_zsy/core'
 
 import { MasterAttributes } from '../dto/master-attributes.dto'
 

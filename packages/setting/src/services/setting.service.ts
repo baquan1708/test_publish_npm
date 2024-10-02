@@ -7,7 +7,7 @@ import {
   IInvoke,
   KEY_SEPARATOR,
   VERSION_FIRST,
-} from '@mbc-cqrs-severless/core'
+} from '@thinhnguyen_zsy/core'
 import {
   BadRequestException,
   Injectable,

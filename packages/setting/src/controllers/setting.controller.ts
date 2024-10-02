@@ -5,7 +5,7 @@ import {
   IInvoke,
   INVOKE_CONTEXT,
   ROLE_SYSTEM_ADMIN,
-} from '@mbc-cqrs-severless/core'
+} from '@thinhnguyen_zsy/core'
 import {
   BadRequestException,
   Body,

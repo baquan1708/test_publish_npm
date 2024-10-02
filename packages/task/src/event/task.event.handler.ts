@@ -1,8 +1,4 @@
-import {
-  EventHandler,
-  IEventHandler,
-  SnsService,
-} from '@mbc-cqrs-severless/core'
+import { EventHandler, IEventHandler, SnsService } from '@thinhnguyen_zsy/core'
 import { Logger } from '@nestjs/common'
 
 import { TaskStatusEnum } from '../enums/status.enum'
