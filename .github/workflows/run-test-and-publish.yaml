@@ -1,8 +1,8 @@
-name: Run test
+name: Run test and publish
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [closed]
     branches:
       - develop
       - main
@@ -14,8 +14,8 @@ permissions:
 
 jobs:
   unit_tests:
+    if: github.event.pull_request.merged == true # Condition
     name: Unit Test
-    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -84,3 +84,33 @@ jobs:
           path: report/e2e-core.xml # Path to test results
           reporter: jest-junit # Format of test results
           fail-on-error: 'true' #  Set action as failed if test report contains any failed test
+
+  publish:
+    if: github.event.pull_request.merged == true # Condition
+    name: Publish
+    needs: e2e_tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+      - name: Authenticate with npm
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
+      - name: 'Version and publish'
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor}}@users.noreply.github.com"
+
+          if [[ "${{ github.base_ref }}" == "development" ]]; then
+            npx lerna version prepatch --force-publish --no-changelog --yes
+          else
+            npx lerna version prepatch --conventional-graduate --no-changelog --yes
+          fi
+
+          npx lerna publish from-git --yes
