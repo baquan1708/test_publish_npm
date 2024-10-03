@@ -1,7 +1,7 @@
 name: Run test
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, synchronize]
     branches:
       - develop
@@ -15,7 +15,6 @@ permissions:
 jobs:
   unit_tests:
     name: Unit Test
-    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -32,18 +31,12 @@ jobs:
       - name: Run Unit Tests
         run: npm run test
 
-      - name: Debug
-        run: ls -la
-
-      - name: Debug report
-        run: ls -la report
-
       - name: Unit Test Report
         uses: dorny/test-reporter@v1
         if: success() || failure() # run this step even if previous step failed
         with:
           name: Unit Tests Reporter # Name of the check run which will be created
-          path: report/unit.xml # Path to test results
+          path: report/*.xml # Path to test results
           reporter: jest-junit # Format of test results
           fail-on-error: 'true' #  Set action as failed if test report contains any failed test
 
@@ -64,10 +57,10 @@ jobs:
         run: npm ci
 
       - name: Build test
-        run: npx lerna run build:test --scope=@thinhnguyen_zsy/core
+        run: npx lerna run build:test --scope=@mbc-cqrs-severless/core
 
       - name: Run e2e Tests
-        run: npx lerna run test:e2e --scope=@thinhnguyen_zsy/core
+        run: npx lerna run test:e2e --scope=@mbc-cqrs-severless/core
 
       - uses: actions/upload-artifact@v4
         name: 'upload artfact'
