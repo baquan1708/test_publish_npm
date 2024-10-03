@@ -73,22 +73,15 @@ jobs:
       - name: Authenticate with npm
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
+      - name: Make changes
+        run: |
+          echo "Test change" >> file.txt
+          git add file.txt
+          git commit -m "Update file.txt with test change"
+
       - name: 'Version and publish'
-        env:
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor}}@users.noreply.github.com"
           git remote set-url origin https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git
-
-          echo $PAT_TOKEN
-
-          echo "git remote set-url origin https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git"
-
-          if [[ "${{ github.base_ref }}" == "development" ]]; then
-            npx lerna version prepatch --force-publish --no-changelog --yes
-          else
-            npx lerna version prepatch --conventional-graduate --no-changelog --yes
-          fi
-
-          npx lerna publish from-git --yes
+          git push origin HEAD:develop
