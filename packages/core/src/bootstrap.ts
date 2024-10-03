@@ -49,7 +49,7 @@ async function bootstrap(opts: AppModuleOptions) {
     const { DocumentBuilder, SwaggerModule } = await import('@nestjs/swagger')
 
     const swgConfig = new DocumentBuilder()
-      .setTitle('serverless')
+      .setTitle('serverlesss')
       .setDescription('The serverless API')
       .addServer('http://localhost:3000/', Environment.Local)
       .addApiKey(
