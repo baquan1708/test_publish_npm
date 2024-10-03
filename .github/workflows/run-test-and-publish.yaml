@@ -73,15 +73,12 @@ jobs:
       - name: Authenticate with npm
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
-      - name: Make changes
-        run: |
-          echo "Test change" >> file.txt
-          git add file.txt
-          git commit -m "Update file.txt with test change"
-
       - name: 'Version and publish'
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor}}@users.noreply.github.com"
+          echo "Test change" >> file.txt
+          git add file.txt
+          git commit -m "Update file.txt with test change"
           git remote set-url origin https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git
           git push origin HEAD:develop
