@@ -1,7 +1,7 @@
 {
   "name": "thinhnguyen_zsy",
   "version": "1.0.0",
-  "description": "CQRS by AWS serverless",
+  "description": "CQRS by AWS serverless new",
   "main": "index.js",
   "scripts": {
     "build": "lerna run build",
