@@ -1,7 +1,7 @@
 {
   "name": "@thinhnguyen_zsy/core",
   "version": "0.1.0",
-  "description": "CQRS and event base core",
+  "description": "CQRS and event base core new",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
