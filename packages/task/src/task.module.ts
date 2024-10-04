@@ -1,4 +1,4 @@
-import { DataStoreModule, QueueModule } from '@mbc-cqrs-severless/core'
+import { DataStoreModule, QueueModule } from '@thinhnguyen_zsy/core'
 import { DynamicModule, Module } from '@nestjs/common'
 
 import { TaskEventHandler } from './event/task.event.handler'

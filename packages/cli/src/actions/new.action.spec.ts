@@ -25,11 +25,11 @@ describe('useLatestPackageVersion', () => {
     useLatestPackageVersion(__dirname)
     const tplPackageJson = JSON.parse(readFileSync(fname).toString())
 
-    expect(packageJson.devDependencies['@mbc-cqrs-severless/core']).toBe(
-      tplPackageJson.dependencies['@mbc-cqrs-severless/core'],
+    expect(packageJson.devDependencies['@thinhnguyen_zsy/core']).toBe(
+      tplPackageJson.dependencies['@thinhnguyen_zsy/core'],
     )
     expect(packageJson.version).toBe(
-      tplPackageJson.devDependencies['@mbc-cqrs-severless/cli'],
+      tplPackageJson.devDependencies['@thinhnguyen_zsy/cli'],
     )
   })
 

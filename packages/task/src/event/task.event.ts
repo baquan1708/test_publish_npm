@@ -4,7 +4,7 @@ import {
   DetailKey,
   getResourceNameFromArn,
   IEvent,
-} from '@mbc-cqrs-severless/core'
+} from '@thinhnguyen_zsy/core'
 import { DynamoDBRecord, StreamRecord } from 'aws-lambda'
 
 import { TaskEntity } from '../entity/task.entity'

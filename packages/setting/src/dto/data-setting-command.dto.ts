@@ -1,4 +1,4 @@
-import { CommandDto } from '@mbc-cqrs-severless/core'
+import { CommandDto } from '@thinhnguyen_zsy/core'
 import { IsObject, IsOptional } from 'class-validator'
 
 export class DataSettingCommandDto extends CommandDto {

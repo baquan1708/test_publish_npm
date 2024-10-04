@@ -1,4 +1,4 @@
-import { CommandEntity } from '@mbc-cqrs-severless/core'
+import { CommandEntity } from '@thinhnguyen_zsy/core'
 
 import { MasterAttributes } from '../dto/master-attributes.dto'
 

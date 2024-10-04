@@ -1,4 +1,4 @@
-import { DetailDto, IInvoke, INVOKE_CONTEXT } from '@mbc-cqrs-severless/core'
+import { DetailDto, IInvoke, INVOKE_CONTEXT } from '@thinhnguyen_zsy/core'
 import { Body, Controller, Get, Param, Post } from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
 
