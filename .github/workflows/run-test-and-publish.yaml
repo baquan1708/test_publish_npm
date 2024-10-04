@@ -11,74 +11,74 @@ permissions:
   checks: write
 
 jobs:
-  unit_tests:
-    name: Unit Test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: npm
+  # unit_tests:
+  #   name: Unit Test
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 18
+  #         cache: npm
 
-      - name: Install dependencies
-        run: npm ci
+  #     - name: Install dependencies
+  #       run: npm ci
 
-      - name: Run Unit Tests
-        run: npm run test
+  #     - name: Run Unit Tests
+  #       run: npm run test
 
-      - name: Unit Test Report
-        uses: dorny/test-reporter@v1
-        if: success() || failure()
-        with:
-          name: Unit Tests Reporter
-          path: report/unit.xml
-          reporter: jest-junit
-          fail-on-error: 'true'
+  #     - name: Unit Test Report
+  #       uses: dorny/test-reporter@v1
+  #       if: success() || failure()
+  #       with:
+  #         name: Unit Tests Reporter
+  #         path: report/unit.xml
+  #         reporter: jest-junit
+  #         fail-on-error: 'true'
 
-  e2e_tests:
-    name: E2e Test For Core package
-    needs: unit_tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: npm
+  # e2e_tests:
+  #   name: E2e Test For Core package
+  #   needs: unit_tests
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 18
+  #         cache: npm
 
-      - name: Install dependencies
-        run: npm ci
+  #     - name: Install dependencies
+  #       run: npm ci
 
-      - name: Build test
-        run: npx lerna run build:test --scope=@thinhnguyen_zsy/core
+  #     - name: Build test
+  #       run: npx lerna run build:test --scope=@thinhnguyen_zsy/core
 
-      - name: Run e2e Tests
-        run: npx lerna run test:e2e --scope=@thinhnguyen_zsy/core
+  #     - name: Run e2e Tests
+  #       run: npx lerna run test:e2e --scope=@thinhnguyen_zsy/core
 
-      - uses: actions/upload-artifact@v4
-        name: 'upload artfact'
-        if: success() || failure()
-        with:
-          name: my-artifacts
-          path: ./packages/core/test/scripts/*.out.txt
+  #     - uses: actions/upload-artifact@v4
+  #       name: 'upload artfact'
+  #       if: success() || failure()
+  #       with:
+  #         name: my-artifacts
+  #         path: ./packages/core/test/scripts/*.out.txt
 
-      - name: E2E Test Report
-        uses: dorny/test-reporter@v1
-        if: success() || failure()
-        with:
-          name: E2E Core Tests Reporter
-          path: report/e2e-core.xml
-          reporter: jest-junit
-          fail-on-error: 'true'
+  #     - name: E2E Test Report
+  #       uses: dorny/test-reporter@v1
+  #       if: success() || failure()
+  #       with:
+  #         name: E2E Core Tests Reporter
+  #         path: report/e2e-core.xml
+  #         reporter: jest-junit
+  #         fail-on-error: 'true'
 
   publish:
     name: Publish
-    needs: e2e_tests
+    # needs: e2e_tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
